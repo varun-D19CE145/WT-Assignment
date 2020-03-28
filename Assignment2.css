@@ -1,0 +1,30 @@
+.div1
+{
+	text-align: center;
+	color: red;
+}
+
+.div2
+{
+	color: blue;
+}
+.div3
+{
+	text-align: left;
+	padding-left: 10px;
+}
+.div4
+{
+	text-align: center;
+	color: black;
+}
+.img
+{
+	height: 100px;
+	width: 200px;
+}
+.table
+{
+	border: 10;
+	width: 100%;
+}

@@ -1,0 +1,185 @@
+<html>
+    <head>
+        <title>WT Assignment 5</title>
+        <style>
+            html,body
+            {
+                width:"100%";
+                height:"100%";
+                font-family:'Times New Roman', Times, serif ;
+                color: black;
+                background-image: url(https://wallpapercave.com/wp/4FT2oRm.jpg);
+            }
+            #cont 
+            {
+                position: fixed;
+                width: 340px;
+                height: 475px;
+                top: 30%;
+                left: 50%;
+                margin-top: -170px;
+                margin-left: -170px;
+                background:white;
+                border-top-right-radius: 10px;
+                border-top-left-radius: 10px;
+                border: 1px solid black;
+                background-image: url(http://cdn158.picsart.com/226000370051202.png);
+                background-position: 0%;
+                background-position-y: -80px;
+
+            }
+            form 
+            {
+                margin: 0 auto;
+                margin-top: 20px;
+            }
+            label 
+            {
+                color: rgb(10, 10, 10);
+                display: inline-block;
+                margin-left: 18px;
+                padding-top: 10px;
+                font-size: 14px;
+            }
+            p a 
+            {
+                font-size: 14px;
+                color: black;
+                float: right;
+                margin-top: -13px;
+                margin-right: 20px;
+            }
+            input 
+            {
+                font-family: 'Times New Roman', Times, serif;
+                font-size: 12px;
+                outline: none;
+            }
+            input[type=text],
+            input[type=password] 
+            {
+                color:black;
+                padding-left: 10px;
+                margin: 10px;
+                margin-top: 12px;
+                margin-left: 18px;
+                width: 290px;
+                height: 35px;
+                border: 1px solid black;
+                border-radius: 2px;
+                
+            }
+            input[type=text]:hover,
+            input[type=password]:hover 
+            {
+                border: 1px solid #b6bfc0;
+            }
+            input[type=text]:focus,
+            input[type=password]:focus 
+            {
+                border: 1px solid #a8c9e4;
+            }
+            #down 
+            {
+                background: white;
+                width: 100%;
+                height: 100px;
+                margin-top: 60px;
+                border-bottom: 1px solid black;
+                border-bottom-right-radius: 10px;
+                border-bottom-left-radius: 10px;
+                
+            }
+            input[type=radio] 
+            {
+                margin-left: 50px;
+                margin-top: 10px;
+                border-color: black;
+            }
+            input[type=checkbox] 
+            {
+                margin-left: 30px;
+                margin-top: 42px;
+                border-color: black;
+            }
+            .check 
+            {
+                margin-left: 3px;
+                font-size: 11px;
+                color: black;
+            }   
+            input[type=submit] 
+            {
+                float: right;
+                margin-right: 20px;
+                margin-top: 30px;
+                width: 90px;
+                height: 40px;
+                font-size: 14px;
+                font-weight: bold;
+                color:black;
+                
+                border: 1px solid black;
+                cursor: pointer;
+            }
+        </style>
+        <script>
+	        function blr()
+	        {
+		        alert("Input field just lost the focus");
+	        }
+	    </script>
+    </head>
+    <body>
+        <div id="cont">
+            <h3><center>National Workshop On Web Technology</center></h3>
+            <form method="POST">
+                <label for="username">Name:</label>
+                <input type="text" id="Name" name="Name" onblur="blr()">
+                <label for="password">Email:</label>
+                <input type="text" name="Email" required onblur="blr()">
+                <label for="password">City</label>
+                <input type="password" id="City" name="password" onblur="blr()">
+                <label for="password">Phone Number:</label>
+                <input type="text" name="Number" required onblur="blr()">
+                <div id="down">
+                    <input type="checkbox"><label class="check" for="checkbox">I Accept all the Terms & Conditions</label>
+                    <input type="submit" value="Register">
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
+
+<?php
+$c=mysqli_connect("localhost","root","");
+				mysqli_select_db($a,"Workshop");
+if($c)
+	{
+		if(isset($_POST["submit"]))
+			{
+				$nm=$_POST['Name'];
+				$em=$_POST['Email'];
+				$city=$_POST['City'];
+				$mob=$_POST['Number'];
+				
+
+				$ins="insert into Register values('$nm','$em','$city','$mob')";
+
+
+				if(mysqli_query($a,$ins))
+					{
+						echo"<br><script>alert('Your entry has been registered successfully!');</script><br>";
+					}
+				else
+					{
+						echo mysqli_error($a);
+					}
+			}
+			else
+				{
+					echo mysqli_error($a);
+				}
+    }
+mysqli_close($a);
+?>
